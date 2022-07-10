@@ -9,19 +9,19 @@ from pyrogram import filters, Client
 from Zaid.main import bot as app
 from config import SUDO_USERS as SUDOERS
 
-@app.on_message(filters.command("speedtest") & ~filters.edited)
-async def run_speedtest(_, message):
+@app.on_message(filters.command("mspeedtest") & ~filters.edited)
+async def run_mspeedtest(_, message):
     userid = message.from_user.id
     m = await message.reply_text("__Processing__...")
     try:
-        test = speedtest.Speedtest()
+        test = mspeedtest.mspeedtest()
         test.get_best_server()
         m = await m.edit("⚡️ __running download speedtest__")
         test.download()
         m = await m.edit("⚡️ __running upload speedtest__")
         test.upload()
         test.results.share()
-    except speedtest.ShareResultsConnectFailure:
+    except mspeedtest.ShareResultsConnectFailure:
         pass
     except Exception as e:
         await m.edit_text(e)
