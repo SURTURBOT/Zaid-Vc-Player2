@@ -20,7 +20,7 @@ from Zaid.Database.active import (
 @app.on_message(filters.command("activevoice") & filters.user(SUDO_USERS))
 async def activevc(_, message: Message):
     mystic = await message.reply_text(
-        "Getting active voice chats.. Please hold"
+        "Please hold ultron Getting active voice chats.."
     )
     served_chats = await get_active_chats()
     text = ""
