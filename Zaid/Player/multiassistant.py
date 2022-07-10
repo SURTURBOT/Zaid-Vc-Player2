@@ -21,7 +21,7 @@ from Zaid.main import random_assistant
 ass_num_list = ["1", "2", "3", "4", "5"]
 
 
-@app.on_message(filters.command("changeassistant") & filters.user(SUDOERS))
+@app.on_message(filters.command("changeassistant") & other_filters)
 async def assis_change(_, message: Message):
     usage = f"**Usage:**\n/changeassistant [ASS_NO]\n\nSelect from them\n{' | '.join(ass_num_list)}"
     if len(message.command) != 2:
